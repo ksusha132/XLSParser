@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Iterator;
 
 /**
  * Created by ksusha on 21.11.2017.
@@ -12,6 +13,14 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         UserParser up = new UserParser();
-        System.out.println(up.parse());
+
+        //User user = up.parse().get(0);
+        for (Iterator<User> it = up.parse().iterator(); it.hasNext(); ) {
+            User user = it.next();
+            System.out.println(user.getAge());
+            System.out.println(user.getName());
+            System.out.println(user.getSecName());
+            System.out.println(user.getPatronimic());
+        }
     }
 }
