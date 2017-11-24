@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 /**
@@ -13,14 +15,15 @@ import java.util.Iterator;
 public class Main {
     public static void main(String[] args) throws IOException {
         UserParser up = new UserParser();
+        HashMap<String, Object> map = new HashMap<String, Object>();
 
         //User user = up.parse().get(0);
-        for (Iterator<User> it = up.parse().iterator(); it.hasNext(); ) {
-            User user = it.next();
+        for (User user : up.parse()) {
             System.out.println(user.getAge());
             System.out.println(user.getName());
             System.out.println(user.getSecName());
             System.out.println(user.getPatronimic());
+            map.put(user.getName(), user); // I need this to transmit this map into somewhere else... In cache
         }
     }
 }
